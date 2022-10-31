@@ -41,7 +41,9 @@ def generate_LR_Vimeo90K():
         blurred_image = cv2.GaussianBlur(image, (0, 0), sigma)
 
         # subsampling
-        image_LR = blurred_image[::up_scale, ::up_scale]
+        # image_LR = blurred_image[::up_scale, ::up_scale]
+        image_LR = cv2.resize(blurred_image, (0, 0), fx=0.25, fy=0.25,
+                               interpolation=cv2.INTER_CUBIC)
 
         folder = filename.split('/')[8]
         sub_folder = filename.split('/')[9]
